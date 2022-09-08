@@ -7,6 +7,11 @@
             "Morenorafael\\Alegra\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "MorenoRafael\\Alegra\\Tests\\": "tests"
+        }
+    },
     "authors": [
         {
             "name": "Rafael Moreno",
@@ -14,7 +19,21 @@
         }
     ],
     "minimum-stability": "dev",
+    "require": {
+        "php": "^8.0.2",
+        "guzzlehttp/guzzle": "7.5.x-dev"
+    },
     "require-dev": {
         "orchestra/testbench": "8.0.x-dev"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Morenorafael\\Alegra\\Providers\\AlegraServiceProvider"
+            ],
+            "aliases": {
+                "Alegra": "Morenorafael\\Alegra\\Facades\\Alegra"
+            }
+        }
     }
 }
