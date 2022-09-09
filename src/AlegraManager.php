@@ -4,6 +4,7 @@ namespace Morenorafael\Alegra;
 
 use Illuminate\Http\Client\PendingRequest;
 use Morenorafael\Alegra\Models\Contact;
+use Morenorafael\Alegra\Models\Invoice;
 use Morenorafael\Alegra\Models\Product;
 
 class AlegraManager
@@ -20,5 +21,10 @@ class AlegraManager
     public function contact(): Contact
     {
         return new Contact($this->request);
+    }
+
+    public function invoice(): Invoice
+    {
+        return new Invoice($this->request);
     }
 }
