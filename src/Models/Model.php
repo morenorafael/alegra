@@ -6,6 +6,9 @@ use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Fluent;
 
+/**
+ * @property int $id
+ */
 abstract class Model extends Fluent
 {
     protected string $uri;

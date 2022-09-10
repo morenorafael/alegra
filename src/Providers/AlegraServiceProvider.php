@@ -2,13 +2,12 @@
 
 namespace Morenorafael\Alegra\Providers;
 
-use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\ServiceProvider;
 use Morenorafael\Alegra\AlegraManager;
 
-class AlegraServiceProvider extends ServiceProvider implements DeferrableProvider
+class AlegraServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -33,8 +32,6 @@ class AlegraServiceProvider extends ServiceProvider implements DeferrableProvide
 
             return new AlegraManager($http);
         });
-
-        $this->app->bind('alegra.controller', fn (Application $app) => $app['alegra']->driver());
     }
 
     /**
@@ -47,12 +44,5 @@ class AlegraServiceProvider extends ServiceProvider implements DeferrableProvide
         $this->publishes([
             __DIR__.'/../../config/alegra.php' => config_path('alegra.php'),
         ], 'alegra-config');
-    }
-
-    public function provides()
-    {
-        return [
-            'alegra', 'alegra.controller',
-        ];
     }
 }

@@ -10,24 +10,18 @@ class InvoiceTest extends TestCase
     public function test_create_invoice()
     {
         $contact = Alegra::contact()->find(1);
-
         $product = Alegra::product()->find(1);
 
         $invoice = Alegra::invoice();
-        $invoice->date = '2016-02-3';
+        $invoice->date = '2017-02-3';
         $invoice->dueDate = '2021-09-21';
-        $invoice->client = $contact->id;
-        $invoice->items = [
-            [
-                'id' => $product->id,
-                'price' => '1500',
-                'quantity' => 2
-            ],
-        ];
+
+        $invoice->addClient($contact);
+        $invoice->addProduct($product, 2);
 
         $created = $invoice->create();
 
-        $this->assertEquals('2016-02-03', $created->date);
+        $this->assertEquals('2017-02-03', $created->date);
         $this->assertEquals('2021-09-21', $created->dueDate);
     }
 
